@@ -1,17 +1,44 @@
+// import the React and ReactDOM libraries
+// ES2015 import statement
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
+// CommonJS import statement
+// const React = require('react')
+
+// Create a React component
+
+// using Function Key work
+// const App = function() {
+//     return <div>Hi There!</div>
+// }
+
+function getButtonText() {
+    return 'Click on me!'
+}
+
+// using ES2015 Arrow function
+const App = () => {
+    // const buttonText = 'Click Me!';
+    const buttonText = { text: 'Click Me!' };
+
+    return ( 
+        <div>
+            {/* this 'htmlFor' allows for user to click on 'Enter name' and the input box will get highlighted */}
+            <label className="label" htmlFor="name">Enter Name</label>
+            <input id="name" type="text" />
+            <button style={{ backgroundColor: 'blue', color: 'white' }}>
+                {/* {buttonText} */}
+                {buttonText.text}
+                {/* {getButtonText()} */}
+            </button>
+        </div>
+    )
+}
+
+// Take the react component and show it on the screen
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    <App />,
+    // picks the ID from public/index.html
+    document.querySelector('#root')
+)
